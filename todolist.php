@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-signin-client_id"
         content="<YOUR-CLIENT-ID>.apps.googleusercontent.com.apps.googleusercontent.com">
-    <title>Document</title>
+    <title>Todolist</title>
 </head>
 <style>
     * {
@@ -44,7 +44,7 @@
     .input_txt input {
         padding: 15px;
         width: 95%;
-        margin-bottom: 1%;
+        margin-bottom: 0px;
         margin-top: 1%;
         border-radius: 5px;
         display: inline-block;
@@ -65,6 +65,7 @@
         padding: 15px;
         outline: none;
         width: 100%;
+        margin-top: 20px;
         margin-bottom: 20px;
         cursor: pointer;
     }
@@ -118,9 +119,20 @@
     .erro {
         width: 100%;
         height: 10px;
+        color:red;
+        margin-left: 20px;
     }
+
 </style>
 
+<script>
+    var signin_btn = document.getElementById('sigin');
+    var signup_btn = document.getElementById('signup');
+
+    signin_btn.addEventListener('click', function(){
+        FormData.myform.action = 'mytodolist.php';
+    })
+</script>   
 <body>
 
     <div class="generality">
@@ -131,10 +143,10 @@
             <h3>Sign In</h3>
         </div>
         <div class="form_all">
-            <form action="#" method="post" class="form">
+            <form action="" method="post" name="myform" class="form" id="form">
                 <div class="login">
                     <div class="input_txt">
-                        <input name="email" type="email" placeholder="Email...">
+                        <input name="email" type="email" id="email" placeholder="Email...">
                     </div>
                     <div class="erro">
                         <p> </p>
@@ -142,29 +154,29 @@
                     <div class="input_txt">
                         <input name="password" type="password" placeholder="Password...">
                     </div>
+
                     <div class="erro">
-                        <p></p>
+                    </div>
+
+                    <div class="but">
+                        <input type="submit" class="signin" id="signin" value="Sign in to Account"
+                            style=" opacity: 0.6;">
                     </div>
                     <div class="but">
-                        <input type="button" class="signin" value="Sign in to Account"
-                            style=" opacity: 0.6; cursor: not-allowed;">
+                        <input type="submit" class="signup" id="signup" value="Signup to creat Account"
+                            style=" opacity: 0.6;">
                     </div>
-                    <div class="but">
-                        <input type="button" class="signup" value="Signup to creat Account"
-                            style=" opacity: 0.6; cursor: not-allowed;">
-                    </div>
+            </form>
                     <div class="google_a">
                         <a href="">or Sign in with Google</a>
                     </div>
                     <div class="googleSignIn">
                         <img src="google.png" alt="" id="googleSignIn">
-                        <script src="https://apis.google.com/js/platform.js?onload=onLoadGoogleCallback" async
+                        <!-- <script src="https://apis.google.com/js/platform.js?onload=onLoadGoogleCallback" async -->
                             defer></script>
-
                     </div>
-
                 </div>
-            </form>
+            
         </div>
         <!-- end form_all -->
     </div>
@@ -172,7 +184,9 @@
 
 </body>
 
-<script>
+
+
+<!-- <script>
     function onLoadGoogleCallback() {
         gapi.load('auth2', function () {
             auth2 = gapi.auth2.init({
@@ -192,7 +206,7 @@
 
         element = document.getElementById('googleSignIn');
     }
-</script>
+</script> -->
 
 
 

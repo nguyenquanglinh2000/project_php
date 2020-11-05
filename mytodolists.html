@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0px;
+        padding: 0px;
+    }
+
+    body {
+        background-color: #dddddd;
+    }
+
+    .app {
+        width: 40%;
+        height: 750px;
+        margin: auto;
+        position: relative;
+        display: block;
+
+    }
+
+    .image_logo {
+        margin: auto;
+        width: 200px;
+        height: 200px;
+    }
+
+    .image_logo img {
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+    h2 {
+        font-family: 'Times New Roman', Times, serif;
+        color: #2c3e50;
+        font-size: 40px;
+    }
+
+    .listtodo_content {
+        width: 100%;
+        height: 100%;
+    }
+
+    .listtodo_content p {
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 20px;
+    }
+
+    #creat_list {
+        padding: 15px;
+        width: 95%;
+        margin-bottom: 1%;
+        margin-top: 1%;
+        border-radius: 5px;
+        display: inline-block;
+        font-size: 15px;
+        background-color: #faf2f2;
+        color: #1E5F74;
+
+    }
+
+    .check_all {
+        width: 100%;
+        height: 50px;
+        padding-top: 1%;
+        border-top: 1px solid #b2acac;
+        border-bottom: 1px solid #b2acac;
+
+    }
+
+    .right_txt {
+        position: absolute;
+        z-index: 1;
+        top: 50%;
+        right: 0px;
+    }
+
+    .right_but {
+        position: absolute;
+        z-index: 1;
+        bottom: 10%;
+        right: 0px;
+    }
+
+    .left_but {
+        position: absolute;
+        z-index: 1;
+        bottom: 10%;
+        left: 0px;
+    }
+
+    .left_but input {
+        width: 80px;
+        height: 30px;
+        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        background-color: #03a9f482;
+        cursor: pointer;
+    }
+
+    .left_but input:hover {
+        box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.513), 0 17px 50px 0 rgba(0, 0, 0, 0.493);
+    }
+
+    .left_but input:active {
+        transform: translate(0, 4px);
+    }
+
+    .left_but input:focus:active {
+        background-color: #3fff00;
+    }
+
+
+    .right_but input {
+        width: 120px;
+        height: 30px;
+        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        background-color: #03a9f482;
+        cursor: pointer;
+
+    }
+
+    .right_but input:hover {
+        box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.513), 0 17px 50px 0 rgba(0, 0, 0, 0.493);
+    }
+
+    .right_but input:active {
+        transform: translate(0, 4px);
+    }
+
+    .right_but input:active {
+        background-color: #3fff00;
+    }
+
+    .log_out {
+        height: 50px;
+        width: 50%;
+        margin: auto;
+    }
+
+    .log_out input {
+        display: block;
+        border: 1px solid rgba(29, 5, 5, 0.46);
+        border-radius: 5px;
+        padding: 15px;
+        outline: none;
+        width: 50%;
+        margin-bottom: 20px;
+        cursor: pointer;
+        background-color: #1E5F74;
+        color: white;
+        position: absolute;
+        z-index: 0;
+        bottom: 0px;
+        margin: auto;
+    }
+
+    .log_out input:hover {
+        color: black;
+        background-color: #a2d5f2;
+        box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+        -webkit-transition-duration: 0.4s;
+        transition-duration: 0.4s;
+    }
+
+    #num_item {
+        float: right;
+    }
+
+    .list {
+        width: 60%;
+        height: 200px;
+        margin: auto;
+        margin-top: 3%;
+        overflow: auto;
+        font-size: 25px;
+        padding: 0px 60px;
+    }
+
+    li {
+        padding: 10px 40px;
+    }
+    #ul{
+        list-style-type:decimal;
+    }
+</style>
+
+<body>
+    <div class="app">
+        <div class="image_logo">
+            <img src="php.png" alt="">
+        </div>
+
+        <div class="listtodo_content">
+
+            <h2>My todo list</h2>
+
+            <p>user: </p>
+            <form action="" method="post">
+            <input type="text" name="item" id="creat_list" placeholder="What needs to be done">
+
+            <div class="check_all">
+                <div class="left">
+                    <input type="checkbox" name="" id="checkbox">
+                    <label for="Check all">Check all</label>
+                    <p id="num_item"></p>
+                </div>
+
+            </div> <!-- end check all-->
+            <div class="list">
+
+                <ul id="ul" >
+
+                </ul>
+            </div>
+            <div>
+                <div class="left_but">
+                    <input type="submit" value="Update">
+                    <input type="submit" value="Delete">
+                    <input type="submit" value="Add Item" id="add_btn">
+                </div>
+
+                <div class="right_but">
+                    <input type="button" value="Clear Complete" id="clear_btn">
+                </div>
+            </div><!-- end check all-->
+        </form>
+            <div class="log_out">
+                <input type="button" value="Log Out">
+            </div>
+        </div> <!-- end content list-->
+    </div> <!-- end app -->
+    <p id="add"></p>
+    <script>
+        var add_item = document.getElementById('add_btn');
+        var del_item = document.getElementById('del_btn');
+
+
+        var add = document.getElementById('add');
+        var del = document.getElementById('del');
+
+        
+        
+        add_item.addEventListener('click', function(){
+            add.innerHTML = "<?php include 'add.php' ?>";
+        })
+        
+
+        // del_item.addEventListener('click', function(){
+        //     del.innerHTML = "<?php include 'delete.php' ?>";
+        // })
+
+    </script>
+
+<!-- <script>
+        var add_item = document.getElementById('add_btn');
+        
+
+        var add = document.getElementById('add');
+        var del = document.getElementById('del');
+
+
+        add_item.addEventListener('click', function(){
+            add.innerHTML = "";
+        })
+        // del_item.addEventListener('click', function(){
+        //     del.innerHTML = "";
+        // })
+    </script>
+ -->
+    <!-- <script>
+
+        var storageKey = 'todoList';
+        var todoList;
+        var dataString = localStorage.getItem(storageKey);
+
+        if (dataString) {
+            todoList = JSON.parse(dataString);
+            addItem();
+        }
+        else {
+            todoList = [];
+        }
+        // var todoList  = JSON.parse(localStorage.getItem(storageKey));
+
+        var input = document.getElementById('creat_list');
+        var numItem = document.getElementById('num_item');
+        var add_btn = document.getElementById('add_btn');
+        var clear_btn = document.getElementById('clear_btn');
+        var delete_btn = document.getElementById('delete');
+
+
+        add_btn.addEventListener('click', addTodolist); //even add item
+        clear_btn.addEventListener('click', delItem_all); // even clear item
+        delete_btn.addEventListener('click', delete_item)
+        if (todoList == null) {
+            numItem.innerHTML = count_number() + " Item";
+        }
+        else {
+            numItem.innerHTML = count_number() + " Item";
+        }
+
+        function addTodolist() {
+
+            var item = input.value;
+            if (item) {
+                todoList.push(item);
+                addItem();
+                input.value = '';
+                localStorage.setItem(storageKey, JSON.stringify(todoList));
+                numItem.innerHTML = count_number() + " Item";
+            }
+        }
+
+        function addItem() {
+            var ul_list = document.getElementById('ul');
+            var content = todoList.map(function (item) {
+                return '<li>' + item + '</li>';
+            });
+            ul_list.innerHTML = content.join('');
+        }
+
+        function delItem_all() {
+            var number = todoList.length;
+            if (number > 0) {
+                var del = todoList.splice(0, number);
+                addItem();
+                numItem.innerText = 0 + ' Item';
+                localStorage.removeItem(storageKey);
+            }
+
+        }
+
+        function count_number() {
+            var number = todoList.length;
+            return number;
+        }
+
+        function delete_item(){
+            
+        }
+    </script> -->
+
+    
+</body>
+
+
+</html>
